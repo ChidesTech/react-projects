@@ -57,3 +57,118 @@
 .robot-images div p{
     font-size: 2rem;
 }
+
+
+
+.cart-products{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+
+}
+
+.cart-product{
+    width:23%;
+    margin-right: 1%;
+}
+
+.cart-product img{
+    width:  12rem;
+    height: 10rem;
+}
+
+.cart-product-title, .cart-product-price{
+    font-size: 1.2rem;
+}
+.times{
+ gap: 3rem;
+}
+.time{
+    font-size: 6rem;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.timer-buttons{
+    gap: 3rem;
+}
+
+@media(max-width : 768px){
+    .cart-products{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .cart-product{
+        width: 100%;
+    }
+}
+
+
+/* REACT CLASS */
+.todolist{
+   width: 70%;
+   margin: 3rem auto;
+   padding: 2rem;
+   border: 1rem ridge palevioletred;
+   border-radius: 1rem;
+}
+
+.todolist-header{
+    display: flex;
+    gap: 10%;
+}
+
+
+.todolist-input{
+    width: 60%;
+    padding: 1rem;
+    font-size: 1.6rem;
+    border-radius: 1rem;
+    border: 1px solid palevioletred;
+}
+
+.todolist-button{
+  width: 30%;
+  padding: 1rem;
+  font-size: 1.6rem;
+  border-radius: 1rem;
+  background-color: palevioletred;
+  color: white;
+  border: 1px solid white;
+}
+
+.todolist-body{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    margin-top: 1rem;
+}
+
+.todo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    color: palevioletred;
+    border: 1px solid palevioletred;
+    padding: 1rem;
+    border-radius: 1rem;
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+.delete-todo{
+  background-color: red;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1.3rem;
+}

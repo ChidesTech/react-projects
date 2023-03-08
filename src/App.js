@@ -3,31 +3,24 @@ import { useEffect } from "react";
 import "./App.css";
 import ExpandableActivities from "./challenges/ExpandableActivities";
 import FakeStoreApi from "./challenges/FakeStoreApi";
+import ReducerCounter from "./challenges/ReducerCounter";
 import RenderNestedObject from "./challenges/RenderNestedObject";
 import RoboList from "./challenges/RoboList";
+import ToggleableSubTasks from "./challenges/ToggleableSubTasks";
+import CartLogic from "./challenges/CartLogic";
+import Counter from "./challenges/Counter";
+import Timer from "./challenges/Timer";
+import Practice from "./components/Practice";
+import Todolist from "./components/Todolist";
 function App() {
-
-  const nestedObject = {
-    taxi: "a car licensed to transport passengers in return for payment of a fare",
-    food: {
-      sushi:
-        "a traditional Japanese dish of prepared rice accompanied by seafood and vegetables",
-      apple: {
-        Honeycrisp: "an apple cultivar developed at the MAES Horticultural Research Center",
-        Fiji: "an apple cultivar developed by growers at Tohoku Research Station",
-      },
-    },
-  }
-
+  
   return <>
-    {/* <FakeStoreApi/> */}
-    <RenderNestedObject nestedObject={nestedObject}/>
-    {/* <RoboList/> */}
-    {/* <ExpandableActivities /> */}
-
-
+  {/* <Practice/> */}
+  <Todolist/>
   </>
-}
 
+    
+}
+ 
 
 export default App;
