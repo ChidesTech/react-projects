@@ -1,41 +1,36 @@
 import { useState } from "react";
 
-export default function Todolist() {
 
-    // Creating a Todolist
-    // 1. Create a useState for todo and a useState for array list of todos
-    const [todo, setTodo] = useState("");  //empty string
-    const [todos, setTodos] = useState([]); //empty array 
-    // 2. Attach onChange event handler to the input - check input in jsx
-    // 3. Attach onClick event handler function to the button - check button in jsx
-    function clickHandler() {
-        // 4. With each click of the button, add the new todo to the previous array of todos
-        setTodos([...todos, todo])  //spread operator (...)
-       
+export default function Todolist() {
+    // State to store each todo
+  const [todo, setTodo] = useState("");
+  //State to store all todos
+  const [todos, setTodos] = useState([]);
+
+  function clickHandler(){
+    //check if input is empty
+    if(todo === ""){
+        alert("Please enter a text");
+        return; //stops your code from running
     }
-    // 5. Map through the array of todos and display them on the ui - check the jsx
+   setTodos([...todos, todo]);
+   setTodo("");
+  }
 
     return <>
         <div className="todolist">
-
-            <div className="todolist-header">
-                <input value={todo} onChange={e => setTodo(e.target.value)} type="text" className="todolist-input" />
-                <button onClick={clickHandler} className="todolist-button">Add</button>
+            <div className="todolist-header d-flex justify-content-center w-75 p-5 mx-auto mt-3 border rounded">
+                <input value={todo} onChange={e => setTodo(e.target.value)} className="w-75 px-2 py-3 fs-5 me-3 rounded" type="text" placeholder="Enter New Todo" />
+                <button onClick={clickHandler} className="btn btn-primary w-25 px-2 py-3 fs-5 rounded ">Add Todo</button>
             </div>
+            <div className="todolist-body w-75 mx-auto mt-3">
+                {todos.map(x => {
+                    return   <div className="todo p-3 fs-5 bg-primary text-white mb-1 rounded">{x}</div>
 
-            <div className="todolist-body">
-                {
-                todos.map(x => {
-                    return <div className="todo">{x}</div>
-                })
-                }
-                
+                })}
                
+                
             </div>
-
-
-
-
         </div>
 
     </>
