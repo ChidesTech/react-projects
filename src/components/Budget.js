@@ -9,10 +9,17 @@ export default function Budget() {
 
     function submitHandler(e){
        e.preventDefault(); //Prevent the form from submitting and forcefully reloading the page
+       if(!price || !item){
+        alert("Please fill all fields!");
+        return;
+       }
        setItems([...items , {id : Date.now(), item : item , price : Number(price)}]);
        setItem("");
        setPrice("");
+    }
 
+    function deleteHandler(id){
+        setItems(items.filter(x => x.id !== id))
     }
 
     return <>
@@ -23,14 +30,14 @@ export default function Budget() {
                 <button className="form-control btn btn-warning fs-5">Add Budget</button>
             </form>
      
-               <div className="total-budget">Total = ₦400000000</div>     
+               <div className="total-budget">Total = ₦{items.reduce((a,c) => a + c.price, 0)}</div>     
              
             <div className="budget-body mx-5">
                 {items.map(x => {
                   return <div key={x.id} className="budget bg-warning  p-3 fs-4 mx-auto rounded mb-1">
                   <span > {x.item} </span>
                   <span>₦{x.price && x.price.toLocaleString()}</span>
-                  <span className="btn btn-danger">Delete</span>
+                  <span onClick={() => deleteHandler(x.id)} className="btn btn-danger">Delete</span>
               </div>
                 })}
                 
