@@ -10,6 +10,8 @@ export default function Store() {
             .then(data => setProducts(data))
 
     }
+
+    
     //useEffect runs a function once the page load and before components are rendered
     useEffect(() => {
         getProducts();
