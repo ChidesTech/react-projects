@@ -1,25 +1,25 @@
-
-import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Budget from "./components/Budget";
-import Movieflix from "./components/Movieflix";
-import Practice from "./components/Practice";
-import Store from "./components/Store";
-import Todolist from "./components/Todolist";
+import FakeStore from "./components/FakeStore";
+import Home from "./components/Home";
+import TodoApp from "./components/TodoApp";
 
 
-function App() {
-  
 
-  
-  return <>
-   {/* <Todolist></Todolist> */}
-   {/* <Practice></Practice> */}
-   {/* <Budget></Budget> */}
-   {/* <Movieflix></Movieflix> */}
-   <Store></Store>
-  </>
+function App() { 
+  return <BrowserRouter>
+     <a href="/" className="btn btn-primary m-3">Home</a>
+    
+  <Routes>
+    <Route path="/" element={<Home></Home>}   />
+    <Route path="/todo-app" element={<TodoApp></TodoApp>}   />
+    <Route path="/fake-store" element={<FakeStore></FakeStore>}   />
+  </Routes>
 
+   {/* <h1 className="bg-dark mt-5 p-3 text-center text-white">Footer</h1> */}
+
+
+  </BrowserRouter>
     
 }
  

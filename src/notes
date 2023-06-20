@@ -1,0 +1,8 @@
+Creating A Todo List
+
+* Create useStates to store the task to be added and the array of tasks.
+* Add an onChange event to the input.
+* Add an onClick to the button.
+* Write a function to handle the button click event.
+* Add each task to the array of tasks after the button is clicked.
+* Map through the tasks and display them on the browser.
