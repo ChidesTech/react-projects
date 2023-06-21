@@ -1,9 +1,10 @@
 import { useState } from "react"
 import Swal from "sweetalert2";
 
-export default function TodoApp() {
+export default function ExpenseTracker() {
     // 1. Create useStates to store the task to be added and the array of tasks.
     const [newItem, setNewItem] = useState();
+    const [price, setPrice] = useState();
     const [items, setItems] = useState([]);
 
 
@@ -15,14 +16,18 @@ export default function TodoApp() {
             return;
         }
         //    5. Add each task to the array of tasks after the button is clicked.  
-        setItems([...items, { id: Date.now(), newItem }]);
+        setItems([...items, { id: Date.now(), newItem, price : Number(price) }]);
+    //Empty the values for the item and the price input
+    setNewItem("")
+    setPrice("")
+    
     }
 
 
     function deleteItemHandler(id) {
         //Filter and retain all the items that do not have the parameter id
      setItems(items.filter(x => x.id !== id ));
-     Swal.fire("Task deleted");
+     Swal.fire("Expense deleted");
     }
 
 
@@ -32,21 +37,24 @@ export default function TodoApp() {
 
 
     return <>
-        <h1 className="text-center text-uppercase">Todo App</h1>
-        <div className="todo-header d-flex flex-wrap  justify-content-around m-3 p-3 rounded border border-success">
+        <h1 className="text-center text-uppercase">Expense Tracker</h1>
+        <div className="todo-header d-flex flex-wrap  justify-content-around m-3 p-3 rounded border border-primary">
             {/* 2. Add an onChange event to the input. */}
-            <input onChange={e => setNewItem(e.target.value)} placeholder="Enter Task Description" type="text" className="fs-5 p-3  rounded  me-5" />
+            <input value={newItem} onChange={e => setNewItem(e.target.value)} placeholder="Enter Expense Description" type="text" className="fs-5 p-3  rounded  me-5" />
+            <input value={price} onChange={e => setPrice(e.target.value)} placeholder="Enter Expense Price(₦)" type="number" className="fs-5 p-3  rounded  me-5" />
             {/* 3. Add an onClick to the button. */}
-            <button onClick={addTaskHandler} className="btn btn-success p-3 fs-5  ">Add Task</button>
+            <button onClick={addTaskHandler} className="btn btn-primary p-3 fs-5  ">Add Expense</button>
         </div>
-
-
+ 
+ <h1 className="text-center text-primary m-5">Total : {items.reduce( (a, c) =>  a + c.price, 0 )}</h1>
+        
         <div className="tasks">
             {/* 6. Map through the tasks and display them on the browser. */}
             {
                 items.map(x => {
-                    return <div key={x.id} className="bg-light text-success border border-success fs-5 d-flex justify-content-between  m-3 p-3 rounded ">
+                    return <div key={x.id} className="bg-light text-primary border border-primary fs-5 d-flex justify-content-between  m-3 p-3 rounded ">
                         {x.newItem} 
+                       <span>{x.price}</span> 
                         {/* 7. Add the deleteItemHandler to the trash button  */}
                         <i onClick={() => deleteItemHandler(x.id)} style={{ cursor: "pointer" }} className="fa fa-trash text-danger "></i>
                     </div>
