@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import ExpenseTracker from "./components/ExpenseTracker";
-import FakeStore from "./components/FakeStore";
-import Home from "./components/Home";
-import TodoApp from "./components/TodoApp";
+import ExpenseTracker from "./pages/ExpenseTracker";
+import FakeStore from "./pages/FakeStore";
+import Home from "./pages/Home";
+import TodoApp from "./pages/TodoApp";
 
 
 

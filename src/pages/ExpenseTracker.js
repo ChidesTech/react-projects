@@ -11,8 +11,8 @@ export default function ExpenseTracker() {
     // 4. Write a function to handle the button click event.
     const addTaskHandler = () => {
         //Check if the input is empty (i.e if there is a new item)
-        if (!newItem) {
-            Swal.fire("Please enter a task");
+        if (!newItem || !price) {
+            Swal.fire("Please fill all fields");
             return;
         }
         //    5. Add each task to the array of tasks after the button is clicked.  
@@ -54,7 +54,7 @@ export default function ExpenseTracker() {
                 items.map(x => {
                     return <div key={x.id} className="bg-light text-primary border border-primary fs-5 d-flex justify-content-between  m-3 p-3 rounded ">
                         {x.newItem} 
-                       <span>{x.price}</span> 
+                       <span>{x.price && x.price.toLocaleString()}</span> 
                         {/* 7. Add the deleteItemHandler to the trash button  */}
                         <i onClick={() => deleteItemHandler(x.id)} style={{ cursor: "pointer" }} className="fa fa-trash text-danger "></i>
                     </div>
